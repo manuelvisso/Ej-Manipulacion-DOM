@@ -1,6 +1,7 @@
 const pizzaName = document.querySelector(".pizzaName");
 const pizzaPrice = document.querySelector(".pizzaPrice");
 const pizzaInput = document.getElementById("pizzaInput");
+const errorMsg = document.querySelector(".error-msg");
 
 const variedadesDePizza = [
   {
@@ -53,6 +54,13 @@ const variedadesDePizza = [
   },
 ];
 
+// const inputVacio = () => {
+//   if (!pizzaInput.value) {
+//     pizzaName.innerHTML = `Por favor, ingrese un número de pizza para realizar su consulta`;
+//     return;
+//   }
+// };
+
 const avatarSelect = () => {
   let numeroAvatar = pizzaInput.value;
   let container = document.querySelector(".img-container");
@@ -67,11 +75,17 @@ const renderPizza = () => {
   const nroPizza = +pizzaInput.value;
 
   const getPizza = variedadesDePizza.filter((pizza) => pizza.id === nroPizza);
-  if (nroPizza <= variedadesDePizza.length && nroPizza > 0) {
+  if (!pizzaInput.value) {
+    errorMsg.innerHTML = `Por favor, ingrese un número de pizza para realizar su consulta`;
+    pizzaName.innerHTML = ``;
+    pizzaPrice.innerHTML = ``;
+    return;
+  } else if (nroPizza <= variedadesDePizza.length && nroPizza > 0) {
     document.querySelector(".pizzaName").innerHTML = `${getPizza[0].nombre}`;
     document.querySelector(
       ".pizzaPrice"
     ).innerHTML = `AR$ ${getPizza[0].precio}`;
+    errorMsg.innerHTML = ``;
   } else {
     document.querySelector(
       ".pizzaName"
