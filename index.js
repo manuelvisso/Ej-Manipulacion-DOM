@@ -81,16 +81,13 @@ const renderPizza = () => {
     pizzaPrice.innerHTML = ``;
     return;
   } else if (nroPizza <= variedadesDePizza.length && nroPizza > 0) {
-    document.querySelector(".pizzaName").innerHTML = `${getPizza[0].nombre}`;
-    document.querySelector(
-      ".pizzaPrice"
-    ).innerHTML = `AR$ ${getPizza[0].precio}`;
+    pizzaName.innerHTML = `${getPizza[0].nombre}`;
+    pizzaPrice.innerHTML = `AR$ ${getPizza[0].precio}`;
     errorMsg.innerHTML = ``;
   } else {
-    document.querySelector(
-      ".pizzaName"
-    ).innerHTML = `El número de pizza seleccionado no es válido`;
-    document.querySelector(".pizzaPrice").innerHTML = ``;
+    errorMsg.innerHTML = `El número de pizza seleccionado no es válido`;
+    pizzaName.innerHTML = ``;
+    pizzaPrice.innerHTML = ``;
   }
 };
 
